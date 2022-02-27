@@ -27,6 +27,7 @@ public class Bai1 {
     Scanner sc = new Scanner(System.in);
     System.out.println("Nhap n : ");
     int num = sc.nextInt();
+    sc.close();
 
     return num;
   }
