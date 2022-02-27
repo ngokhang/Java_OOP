@@ -4,6 +4,8 @@ import java.util.*;
 
 class fibNumber {
   protected long sumFibonacci(int n) {
+    if (n > 99)
+      return 0;
     if (n <= 0)
       return 0;
     if (n == 1)
@@ -13,12 +15,14 @@ class fibNumber {
 
     long res = 1;
     long temp = 1;
+    long sum = 2;
     for (int i = 3; i <= n; i++) {
       res = res + temp;
       temp = res - temp;
+      sum += res;
     }
 
-    return res;
+    return sum;
   }
 }
 
