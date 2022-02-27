@@ -1,17 +1,8 @@
-package BT_Tuan2;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
+package BT_Tuan2;
 
-/**
- * Bai2
- * Note : Default, matrices in files is 3x3 type
- * -> If need to change matrices'size, will change para: rows, cols in function:
- * getArr, main
- * and files input
- * -> If need to change path, will change your path to file(optional)
- */
 public class Bai2 {
   public static int[][] getArr(String path, int rows, int cols) throws Exception {
     Scanner sc = new Scanner(new BufferedReader(new FileReader(path)));
@@ -51,6 +42,18 @@ public class Bai2 {
     display(resArr, rows, cols);
   }
 
+  public static void nhanVoHuong(int[][] arr, int rows, int cols, int value) {
+    int[][] resArr = new int[rows][cols];
+
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        resArr[i][j] = value * arr[i][j];
+      }
+    }
+
+    display(resArr, rows, cols);
+  }
+
   public static void transform(int[][] arr, int rows, int cols) {
     int[][] transArr = new int[cols][rows];
 
@@ -62,27 +65,19 @@ public class Bai2 {
     display(transArr, rows, cols);
   }
 
-  public static void getSize(String path, int rows, int cols) throws Exception {
-    Scanner sc = new Scanner(new BufferedReader(new FileReader(path)));
-    int[][] mt = new int[rows][cols];
-    int row = 0;
-    int col = 0;
-    int sum = 0;
+  public static void nhanHaiMaTran(int[][] arr1, int[][] arr2, int rows, int cols) {
+    int[][] arr = new int[rows][cols];
 
-    while (sc.hasNextLine()) {
-      for (int i = 0; i < mt.length; i++) {
-        String[] line = sc.nextLine().trim().split(" ");
-        row++;
-        for (int j = 0; j < line.length; j++) {
-          mt[i][j] = Integer.parseInt(line[j]);
-          sum++;
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < cols; j++) {
+        arr[i][j] = 0;
+        for (int k = 0; k < rows; k++) {
+          arr[i][j] += arr1[i][j] + arr1[i][k] * arr2[k][j];
         }
       }
     }
-    col = sum / row;
-    String size = Integer.toString(row) + "x" + Integer.toString(col);
 
-    System.out.println(size);
+    display(arr, rows, cols);
   }
 
   public static void main(String[] args) throws Exception {
@@ -93,10 +88,10 @@ public class Bai2 {
     int[][] arr2 = new int[rows][cols];
     arr2 = getArr("./BT_Tuan2/INP2.txt", rows, cols);
 
-    // System.out.println("Hai ma tran");
-    // display(arr1, rows, cols);
-    // System.out.println();
-    // display(arr2, rows, cols);
+    System.out.println("Hai ma tran");
+    display(arr1, rows, cols);
+    System.out.println();
+    display(arr2, rows, cols);
 
     System.out.println("Tong cua hai ma tran");
     addTwoMatriecs(arr1, arr2, rows, cols);
@@ -106,6 +101,10 @@ public class Bai2 {
     System.out.println("Ma tran nghich dao cua ma tran 2");
     transform(arr2, rows, cols);
 
-    getSize("./BT_Tuan2/INP1.txt", rows, cols);
+    System.out.println("Nhan vo huong voi gia tri mac dinh (5)");
+    nhanVoHuong(arr1, rows, cols, 5);
+
+    System.out.println("Nhan hai ma tran");
+    nhanHaiMaTran(arr1, arr2, rows, cols);
   }
 }
