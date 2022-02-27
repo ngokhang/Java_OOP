@@ -1,7 +1,8 @@
+package BT_Tuan2;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
-package BT_Tuan2;
 
 public class Bai2 {
   public static int[][] getArr(String path, int rows, int cols) throws Exception {
