@@ -8,12 +8,6 @@ package BT_Tuan1;
 import java.util.Scanner;
 
 public class bai1 {
-  public static int setLength() {
-    Scanner sc = new Scanner(System.in);
-    int length = sc.nextInt();
-
-    return length;
-  }
 
   public static int[] setArray(int length) {
     Scanner sc = new Scanner(System.in);
@@ -23,11 +17,12 @@ public class bai1 {
       arr[i] = sc.nextInt();
     }
 
+    sc.close();
     return arr;
   }
 
   public static void printArray(int[] array) {
-    System.out.println("Mang da nhap\n");
+    System.out.println("Mang\n");
     for (int i : array) {
       System.out.print(i + " ");
     }
@@ -35,8 +30,6 @@ public class bai1 {
   }
 
   public static void sortArray(int[] array) {
-    System.out.println("Mang da sap xep\n");
-
     for (int i = 0; i < array.length - 1; i++) {
       for (int j = i + 1; j < array.length; j++) {
         if (array[i] <= array[j]) {
@@ -46,16 +39,17 @@ public class bai1 {
         }
       }
     }
-    System.out.println();
   }
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int length = setLength();
+    int length = sc.nextInt();
+
     int[] array = setArray(length);
 
     printArray(array);
     sortArray(array);
     printArray(array);
+    sc.close();
   }
 }
