@@ -1,0 +1,2 @@
+module ThucHanhBuoi2 {
+}
