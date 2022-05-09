@@ -1,4 +1,5 @@
 package bai2_05082022;
+
 import java.io.Serializable;
 import java.io.FileWriter;
 
@@ -15,7 +16,8 @@ class Student implements Serializable {
         this.subjectList = new Subject[n];
     }
 
-    public Student() {}
+    public Student() {
+    }
 
     public void setStudentCode(int studentCode) {
         this.studentCode = studentCode;
